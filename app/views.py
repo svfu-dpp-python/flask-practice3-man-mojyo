@@ -15,3 +15,10 @@ def book_edit():
         db.session.commit()
         return redirect(url_for("book_list"))
     return render_template("book_edit.html")
+def book_delete(pk):
+    book = db.get_or_404(Book, pk)
+    if request.method == 'POST':
+        db.session.delete(book)
+        db.session.commit()
+        return redirect(url_for("book_list"))
+    return render_template("book_delete.html", book=book)
