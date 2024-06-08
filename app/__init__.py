@@ -10,5 +10,7 @@ def create_app():
     migrate.init_app(app, db)
 
     app.add_url_rule("/", view_func=views.index_page)
+    app.add_url_rule("/book_list/", view_func=views.book_list)
+    app.add_url_rule("/book_new/", view_func=views.book_edit, methods=["GET", "POST"])
 
     return app
